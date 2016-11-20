@@ -27,6 +27,14 @@ create table Product(
 	primary key(proType, proName)
 );
 
+--entity Info
+--Do not create table AddInfo.
+create table Info(
+	infoType varchar(256),
+	info varchar(2048),
+	primary key(infoType, info)
+);
+
 drop table Address;
 drop table Staff;
 drop table Product;

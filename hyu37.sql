@@ -1,6 +1,5 @@
 
-
-
+--Entity
 --CreditCard Entity
 
 create table CreditCard (
@@ -32,3 +31,5 @@ create table Order (
 
 	primary key orderID
 );
+
+--Relation

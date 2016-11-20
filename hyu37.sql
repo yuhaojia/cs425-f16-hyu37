@@ -21,9 +21,10 @@ create table Customer (
 --ProOrder Entity
 create table ProOrder (
 	orderID int,
-	status varchar(256) not null check(in ('issued', 'send', 'recieved')),	
+	status varchar(256) not null,
 
-	primary key (orderID)
+	primary key (orderID),
+	check(status = 'issued' or status = 'send' or status =  'recieved'))
 );
 
 drop table CreditCard;

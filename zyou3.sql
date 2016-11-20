@@ -24,5 +24,9 @@ create table Product(
 	proName varchar(256),
 	addInfo varchar(2048),
 	proSize float not null,
-	primary key(proType, name)
+	primary key(proType, proName)
 );
+
+drop table Address;
+drop table Staff;
+drop table Product;

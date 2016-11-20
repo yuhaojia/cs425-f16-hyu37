@@ -1,22 +1,24 @@
 --entitiy wareHouse
-create Table WareHouse
+create table WareHouse
 (
-  WareHouseID int,
+  wareHouseID int,
   capacity float,
   primary key(WareHouseID)
 );
+
 --entitiy Supplier
-create TABLE Supplier
+create table Supplier
 (
-  SupplierID int,
+  supplierID int,
   lastName varchar(256),
   firstName varchar(256),
-  primary key(SupplierID)
+  primary key(supplierID)
 );
+
 --entitiy SupplierProduct
 create table SupplierProduct
 (
-  SPID int,
-  SPname varchar(256),
-  primary key(SPID,SPname)
+  supType varchar(256),
+  name varchar(256),
+  primary key(supType, name)
 );

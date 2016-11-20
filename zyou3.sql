@@ -11,5 +11,8 @@ create table Address{
 
 --entity Staff
 create table Staff{
-	
+	staffID int,
+	jobTitle varchar(256),
+	lastName varchar(256),
+	firstName varchar(256)
 }

@@ -2,7 +2,7 @@
 create table WareHouse
 (
   wareHouseID int,
-  capacity float,
+  capacity float not null,
   primary key(WareHouseID)
 );
 
@@ -10,8 +10,8 @@ create table WareHouse
 create table Supplier
 (
   supplierID int,
-  lastName varchar(256),
-  firstName varchar(256),
+  lastName varchar(256) not null,
+  firstName varchar(256) not null,
   primary key(supplierID)
 );
 

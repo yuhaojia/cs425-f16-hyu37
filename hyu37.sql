@@ -2,8 +2,8 @@
 --CreditCard Entity
 create table CreditCard (
 	cardNum numeric(16,0),
-	expDate date,
-	holder varchar(256),
+	expDate date not null,
+	holder varchar(256) not null,
 
 	primary key (cardNum)
 );
@@ -11,9 +11,9 @@ create table CreditCard (
 --Customer Entity
 create table Customer (
 	customerID int,
-	balance float,
-	lastName varchar(256),
-	firstName varchar(256),
+	balance float not null,
+	lastName varchar(256) not null,
+	firstName varchar(256) not null,
 
 	primary key (customerID)
 );
@@ -21,7 +21,7 @@ create table Customer (
 --Order Entity
 create table Order (
 	orderID int,
-	status varchar(256)	check(in ('issued', 'send', 'recieved')),	
+	status varchar(256) not null check(in ('issued', 'send', 'recieved')),	
 
 	primary key (orderID)
 );

@@ -24,7 +24,7 @@ create table ProOrder (
 	status varchar(256) not null,
 
 	primary key (orderID),
-	check(status = 'issued' or status = 'send' or status =  'recieved'))
+	check(status = 'issued' or status = 'send' or status =  'recieved')
 );
 
 drop table CreditCard;

@@ -19,6 +19,6 @@ create table Supplier
 create table SupplierProduct
 (
   supType varchar(256),
-  name varchar(256),
+  supName varchar(256),
   primary key(supType, name)
 );

@@ -21,7 +21,7 @@ create table Staff(
 --entity Product
 create table Product(
 	proType varchar(256),
-	name varchar(256),
+	proName varchar(256),
 	addInfo varchar(2048),
 	proSize float not null,
 	primary key(proType, name)

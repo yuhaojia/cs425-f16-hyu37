@@ -26,4 +26,8 @@ create table ProOrder (
 	primary key (orderID)
 );
 
+drop table CreditCard;
+drop table Customer;
+drop table ProOrder;
+
 --Relation

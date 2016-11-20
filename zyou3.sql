@@ -6,7 +6,8 @@ create table Address(
 	city varchar(256),
 	state varchar(256),
 	zipcode int,
-	addrType varchar(256)	--delivery, payment, product, staff, supplier
+	addrType varchar(256),	--delivery, payment, product, staff, supplier
+	primary key(addrID)
 );
 
 --entity Staff
@@ -14,7 +15,8 @@ create table Staff(
 	staffID int,
 	jobTitle varchar(256),
 	lastName varchar(256),
-	firstName varchar(256)
+	firstName varchar(256),
+	primary key(staffID)
 );
 
 --entity Product
@@ -23,4 +25,5 @@ create table Product(
 	name varchar(256),
 	addInfo varchar(2048),
 	proSize float,
+	primary key(proType, name)
 );

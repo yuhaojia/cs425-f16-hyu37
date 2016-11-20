@@ -38,3 +38,4 @@ create table Info(
 drop table Address;
 drop table Staff;
 drop table Product;
+drop table Info;

@@ -3,7 +3,7 @@ create table WareHouse
 (
   wareHouseID int,
   capacity float not null,
-  primary key(WareHouseID)
+  primary key(wareHouseID)
 );
 
 --entitiy Supplier

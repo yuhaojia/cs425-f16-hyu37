@@ -18,8 +18,8 @@ create table Customer (
 	primary key (customerID)
 );
 
---Order Entity
-create table Order (
+--ProOrder Entity
+create table ProOrder (
 	orderID int,
 	status varchar(256) not null check(in ('issued', 'send', 'recieved')),	
 

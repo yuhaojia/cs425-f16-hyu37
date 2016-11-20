@@ -22,3 +22,7 @@ create table SupplierProduct
   supName varchar(256),
   primary key(supType, supName)
 );
+
+drop table WareHouse;
+drop table Supplier;
+drop table SupplierProduct;

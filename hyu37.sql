@@ -1,5 +1,5 @@
 --Entity
---CreditCard Entity
+--Entity CreditCard
 create table CreditCard (
 	cardNum numeric(16,0),
 	expDate date not null,
@@ -15,16 +15,16 @@ create table CreditCard (
 		on delete set null	
 );
 
---Customer Entity
+--Entity Customer
 create table Customer (
 	customerID int,
 	balance float not null,
 	lastName varchar(256) not null,
 	firstName varchar(256) not null,
-	primary key (customerID),
+	primary key (customerID)
 );
 
---ProOrder Entity
+--Entity ProOrder
 create table ProOrder (
 	orderID int,
 	status varchar(256) not null,

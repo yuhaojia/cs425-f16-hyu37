@@ -64,7 +64,7 @@ create table pricePerState(
 	proName varchar(256),
 	statePrice float,
 	primary key(addrID, proType, proName),
-	foreign key(addrID) references Address,
+	foreign key(addrID) references Address
 		on delete cascade,
 	foreign key(proType, proName) references Product
 		on delete cascade

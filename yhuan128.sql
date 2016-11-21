@@ -1,4 +1,4 @@
---entitiy wareHouse
+--entitiy WareHouse
 create table WareHouse
 (
   wareHouseID int,
@@ -28,7 +28,8 @@ create table SupplierProduct
   supName varchar(256),
   primary key(supType, supName)
 );
---many to many
+
+--relationship provide many-to-many
 create table provide
 (
   supplierID int,
@@ -41,7 +42,8 @@ create table provide
   foreign key(supType, supName)references SupplierProduct
     on delete cascade
 );
---many to many
+
+--relationship stock many-to-many
 create table stock
 (
   proType varchar(256),

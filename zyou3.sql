@@ -8,8 +8,14 @@ create table Address(
 	zipcode int not null,
 	addrType varchar(256) not null,	--delivery, payment, product, staff, supplier
 	staffID int,
+	warehouseID int,
+	supplierID int,
+	cardNum numeric(16,0)
 	primary key(addrID),
-	foreign key(staffID) references Staff(staffID)
+	foreign key(staffID) references Staff(staffID),
+	foreign key(warehouseID) references WareHouse(warehouseID),
+	foreign key(supplierID) references Supplier(supplierID),
+	foreign key(cardNum) references CreditCard(cardNum)
 );
 
 --entity Staff

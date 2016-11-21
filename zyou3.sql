@@ -7,11 +7,7 @@ create table Address(
 	state varchar(256) not null,
 	zipcode int not null,
 	addrType varchar(256) not null,	--delivery, payment, product, staff, supplier
-	supplierID int,
-	cardNum numeric(16,0)
-	primary key(addrID),
-	foreign key(supplierID) references Supplier,
-	foreign key(cardNum) references CreditCard
+	primary key(addrID)
 );
 
 --entity Staff
@@ -23,6 +19,7 @@ create table Staff(
 	addrID int,
 	primary key(staffID),
 	foreign key(addrID) references Address
+		on delete set null
 );
 
 --entity Product
@@ -34,6 +31,7 @@ create table Product(
 	info varchar(2048),
 	primary key(proType, proName),
 	foreign key(infoType, info) references Info
+		on delete set null
 );
 
 --entity Info
@@ -50,8 +48,10 @@ create table associate(
 	customerID int,
 	addrID int,
 	primary key(customerID, addrID),
-	foreign key(customerID) references Customer,
+	foreign key(customerID) references Customer
+		on delete cascade,
 	foreign key(addrID) references Address
+		on delete cascade
 );
 
 --relationship liveIn one-to-many
@@ -65,7 +65,9 @@ create table pricePerState(
 	statePrice float,
 	primary key(addrID, proType, proName),
 	foreign key(addrID) references Address,
+		on delete cascade,
 	foreign key(proType, proName) references Product
+		on delete cascade
 );
 
 --relationship contain many-to-many
@@ -75,8 +77,10 @@ create table contain(
 	proName varchar(256),
 	quantity int,
 	primary key(orderID, proType, proName),
-	foreign key(orderID) references ProOrder,
+	foreign key(orderID) references ProOrder
+		on delete cascade,
 	foreign key(proType, proName) references Product
+		on delete cascade
 );
 
 --relationship has one-to-many
@@ -86,3 +90,6 @@ drop table Address;
 drop table Staff;
 drop table Product;
 drop table Info;
+drop table associate;
+drop table pricePerState;
+drop table contain;

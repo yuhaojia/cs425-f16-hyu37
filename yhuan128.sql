@@ -5,7 +5,8 @@ create table WareHouse
   capacity float not null,
   addrID int,
   primary key(wareHouseID),
-  foreign(addrID)references Address
+  foreign key(addrID)references Address
+    on delete cascade
 );
 
 --entitiy Supplier
@@ -14,7 +15,10 @@ create table Supplier
   supplierID int,
   lastName varchar(256) not null,
   firstName varchar(256) not null,
-  primary key(supplierID)
+  addrID int,
+  primary key(supplierID),
+  foreign key(addrID) references Address
+    on delete set null
 );
 
 --entitiy SupplierProduct
@@ -32,8 +36,10 @@ create table provide
   supName varchar(256),
   price float,
   primary key(supplierID, supType, supName),
-  foreign key(supplierID)references Supplier,
+  foreign key(supplierID)references Supplier
+    on delete cascade,
   foreign key(supType, supName)references SupplierProduct
+    on delete cascade
 );
 --many to many
 create table stock
@@ -43,8 +49,10 @@ create table stock
   wareHouseID int,
   quanity int,
   primary key(proType, proName, wareHouseID),
-  foreign key(proType, proName)references Product,
+  foreign key(proType, proName)references Product
+    on delete cascade,
   foreign key(wareHouseID)references WareHouse
+    on delete cascade
 );
 
 drop table WareHouse;

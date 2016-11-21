@@ -9,9 +9,10 @@ create table CreditCard (
 	addrID int,
 
 	primary key (cardNum),
-	FOREIGN KEY (customerID) REFERENCES Customer，
+	FOREIGN KEY (customerID) REFERENCES Customer
+		on delete set null,
 	FOREIGN KEY (addrID) REFERENCES Address
-	
+		on delete set null	
 );
 
 --Customer Entity
@@ -20,10 +21,7 @@ create table Customer (
 	balance float not null,
 	lastName varchar(256) not null,
 	firstName varchar(256) not null,
-	--foreign key
-
 	primary key (customerID),
-
 );
 
 --ProOrder Entity
@@ -35,13 +33,13 @@ create table ProOrder (
 	customerID int,
 
 	primary key (orderID),
-	FOREIGN KEY (cardNum) REFERENCES CreditCard,
-	FOREIGN KEY (customerID) REFERENCES Customer,
+	FOREIGN KEY (cardNum) REFERENCES CreditCard
+		on delete set null,
+	FOREIGN KEY (customerID) REFERENCES Customer
+		on delete set null,
 	check(status = 'issued' or status = 'send' or status =  'recieved')
 );
 
 drop table CreditCard;
 drop table Customer;
 drop table ProOrder;
-
---Relation

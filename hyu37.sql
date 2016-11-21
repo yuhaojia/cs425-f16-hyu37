@@ -16,6 +16,7 @@ create table Customer (
 	balance float not null,
 	lastName varchar(256) not null,
 	firstName varchar(256) not null,
+	--foreign key
 	cardNum numeric(16,0),
 	orderID int,
 

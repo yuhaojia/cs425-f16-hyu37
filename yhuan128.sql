@@ -3,7 +3,9 @@ create table WareHouse
 (
   wareHouseID int,
   capacity float not null,
-  primary key(wareHouseID)
+  addrID int,
+  primary key(wareHouseID),
+  foreign(addrID)references Address
 );
 
 --entitiy Supplier
@@ -25,22 +27,24 @@ create table SupplierProduct
 --many to many
 create table provide
 (
-supplierID int,
-supName int,
-price float,
-primary key(supplierID,supName),
-foreign key(supplierID)references Supplier,
-foreign key(supName)references SupplierProduct,
+  supplierID int,
+  supType varchar(256),
+  supName varchar(256),
+  price float,
+  primary key(supplierID, supType, supName),
+  foreign key(supplierID)references Supplier,
+  foreign key(supType, supName)references SupplierProduct
 );
 --many to many
 create table stock
 (
-proType varchar(256),
-wareHouseID int,
-quanity float,
-primary key(proType,wareHouseID),
-foreign key(proType)references Product,
-foreign key(wareHouseID)references WareHouse,
+  proType varchar(256),
+  proName varchar(256),
+  wareHouseID int,
+  quanity int,
+  primary key(proType, proName, wareHouseID),
+  foreign key(proType, proName)references Product,
+  foreign key(wareHouseID)references WareHouse
 );
 
 drop table WareHouse;

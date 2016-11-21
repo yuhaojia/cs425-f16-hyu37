@@ -3,7 +3,9 @@ create table WareHouse
 (
   wareHouseID int,
   capacity float not null,
-  primary key(wareHouseID)
+  addrID int,
+  primary key(wareHouseID),
+  foreign(addrID)references Address
 );
 
 --entitiy Supplier

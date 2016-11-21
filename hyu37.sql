@@ -4,8 +4,10 @@ create table CreditCard (
 	cardNum numeric(16,0),
 	expDate date not null,
 	holder varchar(256) not null,
+	orderID int,
 
-	primary key (cardNum)
+	primary key (cardNum),
+	foreign key (orderID) references ProOrder
 );
 
 --Customer Entity
@@ -14,8 +16,12 @@ create table Customer (
 	balance float not null,
 	lastName varchar(256) not null,
 	firstName varchar(256) not null,
+	cardNum numeric(16,0),
+	orderID int,
 
-	primary key (customerID)
+	primary key (customerID),
+	foreign key (cardNum) references CreditCard,
+	foreign key (orderID) references ProOrder
 );
 
 --ProOrder Entity

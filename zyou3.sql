@@ -7,15 +7,11 @@ create table Address(
 	state varchar(256) not null,
 	zipcode int not null,
 	addrType varchar(256) not null,	--delivery, payment, product, staff, supplier
-	staffID int,
-	warehouseID int,
 	supplierID int,
 	cardNum numeric(16,0)
 	primary key(addrID),
-	foreign key(staffID) references Staff(staffID),
-	foreign key(warehouseID) references WareHouse(warehouseID),
-	foreign key(supplierID) references Supplier(supplierID),
-	foreign key(cardNum) references CreditCard(cardNum)
+	foreign key(supplierID) references Supplier,
+	foreign key(cardNum) references CreditCard
 );
 
 --entity Staff
@@ -24,16 +20,20 @@ create table Staff(
 	jobTitle varchar(256) not null,
 	lastName varchar(256) not null,
 	firstName varchar(256) not null,
-	primary key(staffID)
+	addrID int,
+	primary key(staffID),
+	foreign key(addrID) references Address
 );
 
 --entity Product
 create table Product(
 	proType varchar(256),
 	proName varchar(256),
-	addInfo varchar(2048),
 	proSize float not null,
-	primary key(proType, proName)
+	infoType varchar(256),
+	info varchar(2048),
+	primary key(proType, proName),
+	foreign key(infoType, info) references Info
 );
 
 --entity Info
@@ -41,10 +41,7 @@ create table Product(
 create table Info(
 	infoType varchar(256),
 	info varchar(2048),
-	proType varchar(256),
-	proName varchar(256),
-	primary key(infoType, info),
-	foreign key(proType, proName) references Product(proType, proName)
+	primary key(infoType, info)
 );
 
 --relationship
@@ -53,12 +50,12 @@ create table associate(
 	customerID int,
 	addrID int,
 	primary key(customerID, addrID),
-	foreign key(customerID) references Customer(customerID),
-	foreign key(addrID) references Address(addrID)
+	foreign key(customerID) references Customer,
+	foreign key(addrID) references Address
 );
 
 --relationship liveIn one-to-many
---add PK of Staff (one side) to Address (many side)
+--add PK of Address (one side) to Staff (many side)
 
 --relationship pricePerState many-to-many
 create table pricePerState(
@@ -67,8 +64,8 @@ create table pricePerState(
 	proName varchar(256),
 	statePrice float,
 	primary key(addrID, proType, proName),
-	foreign key(addrID) references Address(addrID),
-	foreign key(proType, proName) references Product(proType, proName)
+	foreign key(addrID) references Address,
+	foreign key(proType, proName) references Product
 );
 
 --relationship contain many-to-many
@@ -78,12 +75,12 @@ create table contain(
 	proName varchar(256),
 	quantity int,
 	primary key(orderID, proType, proName),
-	foreign key(orderID) references ProOrder(orderID),
-	foreign key(proType, proName) references Product(proType, proName)
+	foreign key(orderID) references ProOrder,
+	foreign key(proType, proName) references Product
 );
 
 --relationship has one-to-many
---add PK of Product (one side) to Info (many side)
+--add PK of Info (one side) to Product (many side)
 
 drop table Address;
 drop table Staff;

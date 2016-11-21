@@ -5,10 +5,13 @@ create table CreditCard (
 	expDate date not null,
 	holder varchar(256) not null,
 	--foreign key
-	orderID int,
+	customerID int,
+	addrID int,
 
 	primary key (cardNum),
-	foreign key (orderID) references ProOrder
+	FOREIGN KEY (customerID) REFERENCES Customer，
+	FOREIGN KEY (addrID) REFERENCES Address
+	
 );
 
 --Customer Entity
@@ -18,20 +21,22 @@ create table Customer (
 	lastName varchar(256) not null,
 	firstName varchar(256) not null,
 	--foreign key
-	cardNum numeric(16,0),
-	orderID int,
 
 	primary key (customerID),
-	foreign key (cardNum) references CreditCard,
-	foreign key (orderID) references ProOrder
+
 );
 
 --ProOrder Entity
 create table ProOrder (
 	orderID int,
 	status varchar(256) not null,
+	--foreign key
+	cardNum numeric(16,0),
+	customerID int,
 
 	primary key (orderID),
+	FOREIGN KEY (cardNum) REFERENCES CreditCard,
+	FOREIGN KEY (customerID) REFERENCES Customer,
 	check(status = 'issued' or status = 'send' or status =  'recieved')
 );
 

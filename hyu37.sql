@@ -4,6 +4,7 @@ create table CreditCard (
 	cardNum numeric(16,0),
 	expDate date not null,
 	holder varchar(256) not null,
+	--foreign key
 	orderID int,
 
 	primary key (cardNum),

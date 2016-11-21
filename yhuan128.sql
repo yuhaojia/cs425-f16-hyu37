@@ -22,7 +22,31 @@ create table SupplierProduct
   supName varchar(256),
   primary key(supType, supName)
 );
+--many to many
+create table provide
+(
+supplierID int,
+supName int,
+price float,
+primary key(supplierID,supName),
+foreign key(supplierID)references Supplier,
+foreign key(supName)references SupplierProduct,
+);
+--many to many
+create table stock
+(
+proType varchar(256),
+wareHouseID int,
+quanity float,
+primary key(proType,wareHouseID),
+foreign key(proType)references Product,
+foreign key(wareHouseID)references WareHouse,
+);
 
 drop table WareHouse;
 drop table Supplier;
 drop table SupplierProduct;
+drop table provide;
+drop table stock;
+
+

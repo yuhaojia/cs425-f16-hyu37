@@ -19,9 +19,11 @@ create table Address(
 	addrID int,
 	street varchar(256) not null,
 	city varchar(256) not null,
-	state varchar(256) not null,
+	state char(2) not null,
 	zipcode int not null,
-	addrType varchar(256) not null,	--delivery, payment, product, staff, supplier
+	addrType varchar(256) not null,
+	check (addrType = 'delivery' or addrType = 'payment' or
+		   addrType = 'product' or addrType = 'staff' or addrType = 'supplier'),
 	primary key(addrID)
 );
 

@@ -2,7 +2,7 @@ package model;
 
 public class User {
 	private int ID;	//customer id: 1 - 99
-					//staff id: 100 - 199
+					//staff id: 101 - 199
 	private String type;
 	
 	public int getID() {

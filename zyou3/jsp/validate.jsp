@@ -22,18 +22,19 @@
 	-->
 
 </head>
-
 <body>
 	<jsp:useBean id="user" class="model.User"></jsp:useBean>
 	<jsp:useBean id="userservice" class="service.UserService"></jsp:useBean>
 	<jsp:setProperty property="*" name="user" />
 	<%
 		if(userservice.validateCustomer(user)){
+			session.setAttribute("user", user);
 	%>
 			<jsp:forward page="customer.jsp"></jsp:forward>
 	<%
 		}
 		else if(userservice.validateStaff(user)){
+			session.setAttribute("user", user);
 	%>
 			<jsp:forward page="staff.jsp"></jsp:forward>
 	<%

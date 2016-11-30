@@ -12,7 +12,10 @@ insert into address values(10, 'Michgan Street', 'Chicago', 'IL', 60616, 'suppli
 insert into Info values('Alcohol', '40%');
 insert into Info values('Vitamins', '10%');
 
-insert into Staff values(100, 'Manager', 'White', 'Jessy', 7);
-insert into Staff values(101, 'Assistant Manager', 'Smith', 'John', 8);
+insert into Staff values(101, 'Manager', 'John1', 'Dory1', 7);
+insert into Staff values(102, 'Assistant Manager', 'John2', 'Dory2', 8);
 
-insert into Project values('Food', 'Cookie', 0.5, 'Vitamins', );
+insert into Customer values(1, 1.00, 'John1', 'Dow1');
+insert into Customer values(2, 2.00, 'John2', 'Dow2');
+
+commit;

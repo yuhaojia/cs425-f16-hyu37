@@ -197,3 +197,5 @@ create table stock
   foreign key(wareHouseID)references WareHouse
     on delete cascade
 );
+
+commit;

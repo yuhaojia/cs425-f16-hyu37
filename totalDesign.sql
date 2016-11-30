@@ -1,3 +1,19 @@
+drop table stock;
+drop table provide;
+drop table contain;
+drop table pricePerState;
+drop table associate;
+drop table ProOrder;
+drop table CreditCard;
+drop table Customer;
+drop table SupplierProduct;
+drop table WareHouse;
+drop table Supplier;
+drop table Product;
+drop table Staff;
+drop table Info;
+drop table Address;
+
 --entity Address
 create table Address(
 	addrID int,

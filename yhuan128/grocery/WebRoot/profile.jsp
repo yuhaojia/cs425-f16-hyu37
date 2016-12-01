@@ -23,6 +23,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   <jsp:include page="islogin.jsp"></jsp:include>
   <body>
-  profile.jsp
+  <jsp:useBean id="customer" class="model.Customer"></jsp:useBean>
+  <jsp:useBean id="customersevice" class="service.CustomerService"></jsp:useBean>
+	<table>
+		<tr>
+			<td>Id</td>
+			<td>Last Name</td>
+			<td>First Name</td>
+			<td>Balance</td>
+		</tr>
+		<%
+			
+		%>
+		<tr>
+			
+		</tr>
+
+	</table>
   </body>
 </html>

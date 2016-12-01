@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'main_left.jsp' starting page</title>
+    <title>Modify address and credit card here.</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -23,13 +23,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   <jsp:include page="islogin.jsp"></jsp:include>
   <body>
-    <a href="profile.jsp" target="customer_right">my profile</a><br>
-   <a href="addaddress.jsp" target="customer_right">add new address</a><br>
-     <a href="addcreditcard.jsp" target="customer_right">add new credit card</a><br>
-     <a href="manageaddress.jsp" target="customer_right">manage my address</a><br>
-     <a href="managecreditcard.jsp" target="customer_right">manage my credit card</a><br>
-       <a href="deleteaddress.jsp" target="customer_right">delete my address</a><br>
-       <a href="deletecreditcard.jsp" target="customer_right">delete my credit card</a><br>
-        <a href="exit.jsp" target="_top">exit</a><br>
+   manageinfo.jsp
   </body>
 </html>

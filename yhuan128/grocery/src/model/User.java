@@ -1,19 +1,22 @@
 package model;
 
 public class User {
-	private String userName;
-	private String password;
+	private int ID;	//customer id: 1 - 99
+					//staff id: 101 - 199
+	private String type;
 	
-	public String getUserName() {
-		return userName;
+	public int getID() {
+		return ID;
 	}
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setID(int iD) {
+		ID = iD;
 	}
-	public String getPassword() {
-		return password;
+	public String getType() {
+		return type;
 	}
-	public void setPassword(String password) {
-		this.password = password;
-	}	
+	public void setType(String type) {
+		this.type = type;
+	}
+	
+	
 }

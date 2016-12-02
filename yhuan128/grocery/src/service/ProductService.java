@@ -58,6 +58,17 @@ public class ProductService {
 		}
 
 	}
+	public Boolean deleteStu(String proname) {
+
+		try {
+			pstmt = conn.prepareStatement("delete from Product where proName=?");
+			pstmt.setString(1, proname);
+			pstmt.executeUpdate();
+			return true;
+		} catch (Exception e) {
+			e.getStackTrace();
+			return false;
+		}
 
 	/*public stuInfo queryStubyID(int id) {
 		// List stus = new ArrayList();
@@ -118,17 +129,7 @@ public class ProductService {
 		}
 	}
 
-	public Boolean deleteStu(int id) {
-
-		try {
-			pstmt = conn.prepareStatement("delete from  studentinfo where id=?");
-			pstmt.setInt(1, id);
-			pstmt.executeUpdate();
-			return true;
-		} catch (Exception e) {
-			e.getStackTrace();
-			return false;
-		}
+	
 
 	}*/
 	

@@ -1,3 +1,4 @@
+<%@page import="model.Product"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
@@ -9,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'deleteStaffInfo.jsp' starting page</title>
+    <title>My JSP 'displayStaffInfo.jsp' starting page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -23,6 +24,39 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    This is my JSP page. <br>
+    <jsp:useBean id="product" class="model.Product"></jsp:useBean>
+  <jsp:useBean id="productsevice" class="service.ProductService"></jsp:useBean>
+  <%
+		List pros = productsevice.queryAllpro();
+		// out.print(stus.size());  
+		Iterator iter = pros.iterator();
+	%>
+	<table>
+		<tr>
+			<td>Product Type</td>
+			<td>Product Name</td>
+			<td>Product Size</td>
+			<td>Information Type</td>
+			<td>Information</td>
+		</tr>
+		<%
+			int i = 0;
+			while (iter.hasNext()) {
+				Product product1 = (Product) iter.next();
+		%>
+		<tr <%if (i % 2 == 0) {%> bgcolor="#F0F8FF" <%}%>>
+			<td><%=product1.getProType()%></td>
+			<td><%=product1.getProName()%></td>
+			<td><%=product1.getProSize()%></td>
+			<td><%=product1.getInfoType()%></td>
+			<td><%=product1.getInfo()%></td>
+			<td><a href="deleteProductInfo.jsp?id=<%=product1.getProName()%>">delete</a></td>
+		</tr>
+		<%
+			i++;
+			}
+		%>
+
+	</table>
   </body>
 </html>

@@ -27,19 +27,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<form action="inputProductInfo_result.jsp" method="post">
 			<table bgColor="#c0c0c0">
 				<tr>
-					<td align="center" bgcolor=green colspan=2><font color=white>Input the information of a staff</font></td>
+					<td align="center" bgcolor=green colspan=2><font color=white>Input the information of a product</font></td>
 				</tr>
 				<tr>
-					<td>LastName：</td>
+					<td>Product Type：</td>
 					<td><input type="text" size=20 name="proType"></td>
 				</tr>
 				<tr>
-					<td>FirstName：</td>
+					<td>Product Name：</td>
 					<td><input type="text" size=20 name="proName"></td>
 				</tr>
 				<tr>
-					<td>JobTitle：</td>
+					<td>Product Size：</td>
 					<td><input type="text" size=20 name="proSize"></td>
+				</tr>
+				<tr>
+					<td>Information Type：</td>
+					<td><input type="text" size=20 name="infoType"></td>
+				</tr>
+				<tr>
+					<td>Information：</td>
+					<td><input type="text" size=20 name="info"></td>
 				</tr>
 				<tr ><td align="center" colspan="2" ><input type="submit"  value="Submit">&nbsp;&nbsp; <input
 				type="reset"  value="Reset"></td></tr>				

@@ -3,8 +3,25 @@ package model;
 public class Product {
 	private String proType;
 	private String proName;
-	private String proSize;
+	private float proSize;
+	private String infoType;
+	private String info;
 	
+	public String getInfoType() {
+		return infoType;
+	}
+	public void setInfoType(String infoType) {
+		this.infoType = infoType;
+	}
+	public String getInfo() {
+		return info;
+	}
+	public void setInfo(String info) {
+		this.info = info;
+	}
+	public void setProSize(float proSize) {
+		this.proSize = proSize;
+	}
 	public String getProType() {
 		return proType;
 	}
@@ -17,11 +34,8 @@ public class Product {
 	public void setProName(String proName) {
 		this.proName = proName;
 	}
-	public String getProSize() {
+	public float getProSize() {
 		return proSize;
-	}
-	public void setProSize(String proSize) {
-		this.proSize = proSize;
 	}
 	
 }

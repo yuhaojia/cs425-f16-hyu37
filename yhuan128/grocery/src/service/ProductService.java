@@ -15,9 +15,14 @@ public class ProductService {
 
 	public boolean addPro(Product pro) {
 		try {
-			pstmt = conn.prepareStatement("insert into Product"
-					+ "(proType,proName,proSize,infoType,info)"
-					+ "values(?,?,?,?,?)");
+			//insert into Info first
+			pstmt = conn.prepareStatement("insert into Info values(?,?)");
+			pstmt.setString(1, pro.getInfoType());
+			pstmt.setString(2, pro.getInfo());
+			pstmt.executeUpdate();
+			
+			//insert into Product
+			pstmt = conn.prepareStatement("insert into Product values(?,?,?,?,?)");
 			pstmt.setString(1, pro.getProType());
 			pstmt.setString(2, pro.getProName());
 			pstmt.setFloat(3, pro.getProSize());
@@ -27,7 +32,6 @@ public class ProductService {
 			return true;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-
 			e.printStackTrace();
 			return false;
 		}

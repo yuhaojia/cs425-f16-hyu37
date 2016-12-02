@@ -13,18 +13,27 @@ drop table Product;
 drop table Staff;
 drop table Info;
 drop table Address;
+drop table State;
+
+--entity state
+create table State(
+	stateName char(2),
+	primary key(stateName)
+);
 
 --entity Address
 create table Address(
 	addrID int,
 	street varchar(256) not null,
 	city varchar(256) not null,
-	state char(2) not null,
+	stateName char(2),
 	zipcode int not null,
-	addrType varchar(256) not null,
+	addrType varchar(256) not null,	
 	check (addrType = 'delivery' or addrType = 'payment' or
-		   addrType = 'product' or addrType = 'staff' or addrType = 'supplier'),
-	primary key(addrID)
+		   addrType = 'product' or addrType = 'staff' or
+		   addrType = 'supplier' or addrType = 'warehouse'),
+	primary key(addrID),
+	foreign key(stateName) references State
 );
 
 --entity Info
@@ -128,7 +137,7 @@ create table ProOrder (
 		on delete set null,
 	FOREIGN KEY (customerID) REFERENCES Customer
 		on delete set null,
-	check(status = 'issued' or status = 'send' or status =  'recieved')
+	check(status = 'issued' or status = 'sent' or status =  'received')
 );
 
 --relationship
@@ -146,14 +155,17 @@ create table associate(
 --relationship liveIn one-to-many
 --add PK of Address (one side) to Staff (many side)
 
+--relationship addrState one-to-many
+--add PK of State (one side) to Address (many side)
+
 --relationship pricePerState many-to-many
 create table pricePerState(
-	addrID int,
+	stateName char(2),
 	proType varchar(256),
 	proName varchar(256),
 	statePrice float,
-	primary key(addrID, proType, proName),
-	foreign key(addrID) references Address
+	primary key(stateName, proType, proName),
+	foreign key(stateName) references State
 		on delete cascade,
 	foreign key(proType, proName) references Product
 		on delete cascade

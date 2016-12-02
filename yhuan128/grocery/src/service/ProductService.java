@@ -16,7 +16,7 @@ public class ProductService {
 	public boolean addPro(Product pro) {
 		try {
 			pstmt = conn.prepareStatement("insert into Product"
-					+ "(proType,proName,proSize,infoType,info) "
+					+ "(proType,proName,proSize,infoType,info)"
 					+ "values(?,?,?,?,?)");
 			pstmt.setString(1, pro.getProType());
 			pstmt.setString(2, pro.getProName());
@@ -58,7 +58,7 @@ public class ProductService {
 		}
 
 	}
-	public Boolean deleteStu(String proname) {
+	public Boolean deletepro(String proname) {
 
 		try {
 			pstmt = conn.prepareStatement("delete from Product where proName=?");
@@ -69,6 +69,8 @@ public class ProductService {
 			e.getStackTrace();
 			return false;
 		}
+	}
+}
 
 	/*public stuInfo queryStubyID(int id) {
 		// List stus = new ArrayList();
@@ -133,4 +135,4 @@ public class ProductService {
 
 	}*/
 	
-}
+

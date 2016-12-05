@@ -1,4 +1,5 @@
-<%@ page language="java" import="java.util.*" pageEncoding="ISO-8859-1"%>
+<%@page import="model.Product"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -9,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'staff.jsp' starting page</title>
+    <title>My JSP 'deleteOneStu.jsp' starting page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -21,8 +22,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	-->
 
   </head>
-  <jsp:include page="islogin.jsp"></jsp:include>  
+  
   <body>
- 	staff.jsp <br>
+    <jsp:useBean id="pro" class="model.Product"></jsp:useBean>
+    <jsp:setProperty property="*" name="pro"/>
+  <jsp:useBean id="productsevice" class="service.ProductService"></jsp:useBean>
+		<%
+		String id = (String)request.getParameter("id");
+		out.print(id);
+		Product pr = productsevice.queryproname(id);	
+	
+		if(productsevice.updatepro(pr))
+			out.print("success");
+		else
+			out.print("failure");
+	%>
+	
   </body>
 </html>

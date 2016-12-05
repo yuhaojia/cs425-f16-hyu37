@@ -110,9 +110,8 @@ public class ProductService {
 	public boolean updatepro(Product pro) {
 
 		try {
-			pstmt = conn
-					.prepareStatement("update  Product set proType=? , ProName=? , proSize=? ,infoType=? ,"
-							+ " info=?f");
+			pstmt = conn.prepareStatement(
+				"update Product set proType=?, ProName=?, proSize=?, infoType=?, info=?");
 			pstmt.setString(1, pro.getProType());
 			pstmt.setString(2, pro.getProName());
 			pstmt.setFloat(3, pro.getProSize());

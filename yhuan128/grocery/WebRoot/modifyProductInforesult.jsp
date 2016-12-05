@@ -24,17 +24,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    <jsp:useBean id="product" class="model.Product"></jsp:useBean>
+    <jsp:useBean id="pro" class="model.Product"></jsp:useBean>
     <jsp:setProperty property="*" name="pro"/>
   <jsp:useBean id="productsevice" class="service.ProductService"></jsp:useBean>
 		<%
 		String id = (String)request.getParameter("id");
-		Product pro = productsevice.queryproname(id);	
+		out.print(id);
+		Product pr = productsevice.queryproname(id);	
 	
-		if(productsevice.updatepro(pro))
-		out.print("success");
+		if(productsevice.updatepro(pr))
+			out.print("success");
 		else
-		out.print("failure");
+			out.print("failure");
 	%>
 	
   </body>

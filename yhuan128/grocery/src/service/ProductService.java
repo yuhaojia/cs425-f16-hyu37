@@ -62,11 +62,15 @@ public class ProductService {
 		}
 
 	}
-	public Boolean deletepro(String proname) {
+	public Boolean deletepro(Product pro) {
 
 		try {
-			pstmt = conn.prepareStatement("delete from Product where proName=?");
-			pstmt.setString(1, proname);
+			pstmt = conn.prepareStatement("delete from Product where infoType=? and info=?");
+			pstmt.setString(1, pro.getInfoType());
+			pstmt.setString(2, pro.getInfo());
+			pstmt.executeUpdate();
+			pstmt = conn.prepareStatement("delete from Product where proname=?");
+			pstmt.setString(1, pro.getProName());
 			pstmt.executeUpdate();
 			return true;
 		} catch (Exception e) {
@@ -74,31 +78,23 @@ public class ProductService {
 			return false;
 		}
 	}
-}
 
-	/*public stuInfo queryStubyID(int id) {
+
+	public 	Product queryproname(String proname) {
 		// List stus = new ArrayList();
 		try {
 			pstmt = conn
-					.prepareStatement("select * from studentinfo where id=?");
-			pstmt.setInt(1, id);
+					.prepareStatement("select * from Product where proName=?");
+			pstmt.setString(1, proname);
 			ResultSet rs = pstmt.executeQuery();
 			if (rs.next()) {
-				stuInfo stu = new stuInfo();
-				stu.setId(rs.getInt(1));
-				stu.setNicheng(rs.getString(2));
-				stu.setTruename(rs.getString(3));
-				stu.setXb(rs.getByte(4));
-				if (rs.getDate(5) != null)
-					stu.setCsrq(rs.getDate(5).toString());
-				stu.setZy(rs.getString(6));
-				if (rs.getString(7) != null)
-					stu.setKc(rs.getString(7).split("&"));
-				if (rs.getString(8) != null)
-					stu.setXq(rs.getString(8).split("&"));
-				stu.setBz(rs.getString(9));
-				// stus.add(stu);
-				return stu;
+				Product pro = new Product();
+				pro.setProType(rs.getString(1));
+				pro.setProName(rs.getString(2));
+				pro.setProSize(rs.getFloat(3));
+				pro.setInfoType(rs.getString(4));
+				pro.setInfo(rs.getString(5));
+				return pro;
 
 			}
 			return null;
@@ -111,21 +107,17 @@ public class ProductService {
 
 	}
 
-	public boolean updateStu(stuInfo stu) {
+	public boolean updatepro(Product pro) {
 
 		try {
 			pstmt = conn
-					.prepareStatement("update  studentinfo set nicheng=? , truename=? , xb=? ,csrq=? ,"
-							+ " zy=? ,kc=? , xq=?, bz=?   where id=?");
-			pstmt.setString(1, stu.getNicheng());
-			pstmt.setString(2, stu.getTruename());
-			pstmt.setByte(3, stu.getXb());
-			pstmt.setString(4, stu.getCsrq());
-			pstmt.setString(5, stu.getZy());
-			pstmt.setString(6, stu.getKcs());
-			pstmt.setString(7, stu.getXqs());
-			pstmt.setString(8, stu.getBz());
-			pstmt.setInt(9, stu.getId());
+					.prepareStatement("update  Product set proType=? , ProName=? , proSize=? ,infoType=? ,"
+							+ " info=?f");
+			pstmt.setString(1, pro.getProType());
+			pstmt.setString(2, pro.getProName());
+			pstmt.setFloat(3, pro.getProSize());
+			pstmt.setString(4, pro.getInfoType());
+			pstmt.setString(5, pro.getInfo());
 			pstmt.executeUpdate();
 			return true;
 		} catch (SQLException e) {
@@ -137,6 +129,6 @@ public class ProductService {
 
 	
 
-	}*/
+	}
 	
 

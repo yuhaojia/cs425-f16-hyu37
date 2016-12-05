@@ -50,7 +50,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<td><%=product1.getProSize()%></td>
 			<td><%=product1.getInfoType()%></td>
 			<td><%=product1.getInfo()%></td>
-			<td><a href="deleteProductInfo.jsp?id=<%=productsevice.deletepro(product.getProName())%>">delete</a></td>
+			<td><a href="deleteonepro.jsp?id=<%=product1.getProName()%>">delete</a></td>
 		</tr>
 		<%
 			i++;

@@ -221,4 +221,23 @@ create table stock
     on delete cascade
 );
 
+--relationship pay many-to-many
+create table pay(
+	cardNum numeric(16,0),
+	shopID int,
+	primary key(cardNum, shopID),
+	foreign key(cardNum) references CreditCard,
+	foreign key(shopID) references ShoppingCart
+);
+
+--relationship include many-to-many
+create table include(
+	shopID int,
+	productID int,
+	quantity int,
+	primary key(shopID, productID),
+	foreign key(shopID) references ShoppingCart,
+	foreign key(productID) references Product
+);
+
 commit;

@@ -1,6 +1,7 @@
 --State
 insert into State values('IL');
 insert into State values('CA');
+insert into State values('SD');
 
 --Address
 insert into address values(1, 'S King Dr', 'Chicago', 'IL', 60616, 'delivery');
@@ -77,11 +78,15 @@ insert into Customer values(2, 421.67, 'John2', 'Dow2');
 insert into CreditCard values(1111111111111111, '1-Nov-16', 'John1 Dow1', 1, 3);
 insert into CreditCard values(2222222222222222, '2-Nov-16', 'John2 Dow2', 2, 4);
 
+--ShoppingCart
+insert into ShoppingCart values(1, 1);
+insert into ShoppingCart values(2, 2);
+
 --ProOrder
-insert into ProOrder values(10001, 'issued', 1111111111111111, 1);
-insert into ProOrder values(10002, 'sent', 1111111111111111, 1);
-insert into ProOrder values(10003, 'received', 2222222222222222, 2);
-insert into ProOrder values(10004, 'issued', 2222222222222222, 2);
+insert into ProOrder values(10001, 'issued', 1111111111111111, 1, 1);
+insert into ProOrder values(10002, 'sent', 1111111111111111, 1, 1);
+insert into ProOrder values(10003, 'received', 2222222222222222, 2, 2);
+insert into ProOrder values(10004, 'issued', 2222222222222222, 2, 2);
 
 --associate
 insert into associate values(1, 3);
@@ -116,5 +121,13 @@ insert into stock values(1, 1, 10000);
 insert into stock values(2, 1, 4500);
 insert into stock values(3, 2, 6500);
 insert into stock values(4, 2, 3000);
+
+--pay
+insert into pay values(1111111111111111, 1);
+insert into pay values(2222222222222222, 2);
+
+--include
+insert into include values(1, 1, 45);
+insert into include values(2, 5, 50);
 
 commit;

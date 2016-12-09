@@ -35,6 +35,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <a href="modifycreditcard.jsp" target="customer_right">Modify Credit Card</a><br>
     <a href="deletecreditcard.jsp" target="customer_right">Delete Credit Card</a><br>
     <br>
+    <a href="shopping.jsp" target="customer_right">Begin Shopping</a><br>
+    <a href="shoppingcart.jsp" target="customer_right">Shopping Cart</a><br>
+    <br>
     <a href="exit.jsp" target="_top">Exit</a><br>
   </body>
 </html>

@@ -65,12 +65,12 @@ public class PriceService {
 	}
 
 
-	public 	PricePerState querystatePrice(float statePrice) {
+	public PricePerState querystatePrice(int id) {
 		// List stus = new ArrayList();
 		try {
 			pstmt = conn
-					.prepareStatement("select * from PricePerState where statePrice=?");
-			pstmt.setFloat(1, statePrice);
+					.prepareStatement("select * from PricePerState where productID=?");
+			pstmt.setInt(1, id);
 			ResultSet rs = pstmt.executeQuery();
 			if (rs.next()) {
 				PricePerState pps = new PricePerState();
@@ -91,14 +91,12 @@ public class PriceService {
 	}
 
 	public boolean updatepps(PricePerState pps) {
-
 		try {
-			pstmt = conn.prepareStatement("update  PricePerState set statePrice=? where productID=? , stateName=?");
+			pstmt = conn.prepareStatement("update PricePerState set statePrice=? where productID=? and stateName=?");
 			pstmt.setFloat(1, pps.getStatePrice());
 			pstmt.setInt(2, pps.getProductID());
-				pstmt.setString(3, pps.getstateName());
-			pstmt.executeUpdate();
-		
+			pstmt.setString(3, pps.getstateName());
+			pstmt.executeUpdate();		
 			return true;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

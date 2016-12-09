@@ -11,7 +11,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'modifyPriceInfo.jsp' starting page</title>
+    <title>My JSP 'inputPriceInfo.jsp' starting page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -23,36 +23,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	-->
 
   </head>
+  <jsp:include page="islogin.jsp"></jsp:include>
+  <body>
     <jsp:useBean id="priceperstate" class="model.PricePerState"></jsp:useBean>
   <jsp:useBean id="priceservice" class="service.PriceService"></jsp:useBean>
-  <body>
-  <%
-		List pros = priceservice.queryAllpps();
-		// out.print(stus.size());  
-		Iterator iter = pros.iterator();
-	%>
-	<table>
-		<tr>
-			<td>Product Type</td>
-			<td>Product Name</td>
-			<td>Product Size</td>
-		</tr>
-		<%
-			int i = 0;
-			while (iter.hasNext()) {
-				PricePerState product1 = (PricePerState) iter.next();
-		%>
-		<tr <%if (i % 2 == 0) {%> bgcolor="#F0F8FF" <%}%>>
-			<td><%=product1.getstateName()%></td>
-			<td><%=product1.getProductID()%></td>
-			<td><%=product1.getStatePrice()%></td>
-			<td><a href="modifyProductInforesult.jsp?id=<%=product1.getStatePrice()%>">modify</a></td>
-		</tr>
-		<%
-			i++;
-			}
-		%>
-
-	</table>
+   <center>
+		<form action="addprice.jsp" method="post">
+			<table bgColor="#c0c0c0">
+				<tr>
+					<td align="center" bgcolor=green colspan=2><font color=white>Input the information of a product</font></td>
+				</tr>
+				<tr>
+					<td>State Name：</td>
+					<td><input type="text" size=20 name="stateName"></td>
+				</tr>
+				<tr>
+					<td>Product ID：</td>
+					<td><input type="text" size=20 name="productID"></td>
+				</tr>
+				<tr>
+					<td>State Price：</td>
+					<td><input type="text" size=20 name="statePrice"></td>
+				</tr>
+				<tr ><td align="center" colspan="2" ><input type="submit"  value="Submit">&nbsp;&nbsp; <input
+				type="reset"  value="Reset"></td></tr>				
+			</table>
+			
+		</form>
   </body>
 </html>

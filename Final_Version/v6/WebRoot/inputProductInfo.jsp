@@ -1,5 +1,3 @@
-<%@page import="model.PricePerState"%>
-<%@page import="service.PriceService"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
@@ -11,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'modifyPriceInforesult.jsp' starting page</title>
+    <title>My JSP 'inputProductInfo.jsp' starting page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -23,37 +21,35 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	-->
 
   </head>
-  
+  <jsp:include page="islogin.jsp"></jsp:include>
   <body>
-   <jsp:useBean id="priceperstate" class="model.PricePerState"></jsp:useBean>
-  <jsp:useBean id="priceservice" class="service.PriceService"></jsp:useBean>
-  	<%
-		float id = Float.valueOf(request.getParameter("id"));
-		PricePerState pro = priceservice.querystatePrice(id);
-
-	%>
-	 <center>
-		<form action="modifypricefeedback.jsp" method="post">
+    <center>
+		<form action="inputProductInfo_result.jsp" method="post">
 			<table bgColor="#c0c0c0">
 				<tr>
 					<td align="center" bgcolor=green colspan=2><font color=white>Input the information of a product</font></td>
 				</tr>
 				<tr>
-					<td>Product ID：</td>
-					<td><input type="text" size=20 name="stateName"
-					value="<%= pro.getstateName()%>"></td>
-				</tr>
-				<tr>
 					<td>Product Type：</td>
-					<td><input type="text" size=20 name="productID"
-					value="<%= pro.getProductID()%>"></td>
+					<td><input type="text" size=20 name="proType"></td>
 				</tr>
 				<tr>
 					<td>Product Name：</td>
-					<td><input type="text" size=20 name="statePrice"
-					value="<%= pro.getStatePrice()%>"></td>
+					<td><input type="text" size=20 name="proName"></td>
 				</tr>
-				<tr ><td align="center" colspan="2" ><input type="hidden" name="id" value="<%=pro.getStatePrice()%>"/><input type="submit"  value="Submit">&nbsp;&nbsp; <input
+				<tr>
+					<td>Product Size：</td>
+					<td><input type="text" size=20 name="proSize"></td>
+				</tr>
+				<tr>
+					<td>Information Type：</td>
+					<td><input type="text" size=20 name="infoType"></td>
+				</tr>
+				<tr>
+					<td>Information：</td>
+					<td><input type="text" size=20 name="info"></td>
+				</tr>
+				<tr ><td align="center" colspan="2" ><input type="submit"  value="Submit">&nbsp;&nbsp; <input
 				type="reset"  value="Reset"></td></tr>				
 			</table>
 			

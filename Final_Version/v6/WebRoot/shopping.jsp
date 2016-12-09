@@ -24,7 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
     Please input the product category.
-    <form action="shoppingsearch.jsp" name="search">
+    <form action="shoppingsearch.jsp" method="post">
     Product Category<input type="text" name="type"><br>
     <input type="submit">
     </form>

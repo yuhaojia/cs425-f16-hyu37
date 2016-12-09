@@ -111,7 +111,7 @@ insert into contain values(10003, 7, 18);
 insert into contain values(10004, 1, 20);
 
 --provide
-insert into provide values(201, 'Wine', 'Vodka', 45.0);
+insert into provide values(201, 'Wine', 'Vodka', 67.0);
 insert into provide values(201, 'Meat', 'Chicken', 2.0);
 insert into provide values(202, 'Fruit', 'Apple', 0.6);
 insert into provide values(202, 'Beverage', 'Fanta', 0.3);

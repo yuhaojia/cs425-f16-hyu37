@@ -1,9 +1,12 @@
+drop table include;
+drop table pay;
 drop table stock;
 drop table provide;
 drop table contain;
 drop table pricePerState;
 drop table associate;
 drop table ProOrder;
+drop table ShoppingCart;
 drop table CreditCard;
 drop table Customer;
 drop table SupplierProduct;

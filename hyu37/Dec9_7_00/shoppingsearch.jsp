@@ -55,6 +55,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<td><%=product1.getProSize()%></td>
 			<td><%=product1.getInfoType()%></td>
 			<td><%=product1.getInfo()%></td>
+			<td><a href="shoppingcart.jsp?id=<%=product1.getProID()%>">
+			Buy</a></td>
+			<td>Quantity<input type="text" name="quantity"><br></td>
 		</tr>
 		<%
 			i++;

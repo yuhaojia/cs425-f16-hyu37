@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import model.Shoppingcart;
 import conn.Conn;
+import model.PricePerState;
 import model.Product;
 
 public class ShoppingcartService {
@@ -21,16 +22,17 @@ public class ShoppingcartService {
 	public List queryAllsc(int id) {
 		List stus = new ArrayList();
 		try {
-			pstmt = conn.prepareStatement("select * from shoppingcart natural join include natural join product where customerID = ? ");
+			pstmt = conn.prepareStatement(
+				"select * from shoppingcart natural join include natural join product natural join priceperstate where customerID = ?");
 			pstmt.setInt(1, id);
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
 				Shoppingcart prod  = new Shoppingcart();
-				prod.setProducttype(rs.getString(5));
-				prod.setProductname(rs.getString(6));
-				prod.setPrice(rs.getFloat(11));
-				prod.setQuantity(rs.getInt(4));
 				prod.setProductID(rs.getInt(1));
+				prod.setQuantity(rs.getInt(4));
+				prod.setProductname(rs.getString(6));
+				prod.setProducttype(rs.getString(5));				
+				prod.setPrice(rs.getFloat(11));				
 				stus.add(prod);
 			}
 			return stus;
@@ -40,52 +42,57 @@ public class ShoppingcartService {
 			e.printStackTrace();
 			return null;
 		}
-}
-
-
-public List queryAllscByType(int id, String type) {
-		List stus = new ArrayList();
-		try {
-			pstmt = conn.prepareStatement("select * from shoppingcart natural join include natural join product where customerID = ? and proType = ?");
-			pstmt.setInt(1, id);
-			pstmt.setInt(2, type);
-			ResultSet rs = pstmt.executeQuery();
-			while (rs.next()) {
-				Shoppingcart prod  = new Shoppingcart();
-				prod.setProducttype(rs.getString(5));
-				prod.setProductname(rs.getString(6));
-				prod.setPrice(rs.getFloat(11));
-				prod.setQuantity(rs.getInt(4));
-				prod.setProductID(rs.getInt(1));
-				stus.add(prod);
-			}
-			return stus;
-
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return null;
-		}
-}
-
-
-
-	public boolean updatesc(Shopingcart pro) {
-
+	}
+	
+	public boolean updatesc(Shoppingcart pro) {
 		try {
 			pstmt = conn.prepareStatement(
-				"update Product set proType=?, ProName=?, proSize=?, infoType=?, info=? where productID =?");
-			pstmt.setString(1, pro.getProType());
-			pstmt.setString(2, pro.getProName());
-			pstmt.setFloat(3, pro.getProSize());
-			pstmt.setString(4, pro.getInfoType());
-			pstmt.setString(5, pro.getInfo());
-			pstmt.setInt(6, pro.getProID());
+				"update include set quantity=? where productID =?");
+			pstmt.setInt(1, pro.getQuantity());
+			pstmt.setInt(2, pro.getProductID());
 			pstmt.executeUpdate();
 			return true;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return false;
+		}
+	}
+	public 	Shoppingcart querystatescID(int id) {
+		// List stus = new ArrayList();
+		try {
+			pstmt = conn
+					.prepareStatement("select * from shoppingcart natural join include natural join product natural join priceperstate where shopID=?");
+			pstmt.setInt(1, id);
+			ResultSet rs = pstmt.executeQuery();
+			if (rs.next()) {
+				Shoppingcart prod = new Shoppingcart();
+				prod.setProductID(rs.getInt(1));
+				prod.setShoppingID(rs.getInt(2));
+				prod.setQuantity(rs.getInt(4));
+				prod.setProductname(rs.getString(6));
+				prod.setProducttype(rs.getString(5));				
+				prod.setPrice(rs.getFloat(11));
+				return prod;
+
+			}
+			return null;
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+}
+	public Boolean deletesc(Shoppingcart pps) {
+		try {
+			pstmt = conn.prepareStatement("delete from include where shopID=? and productID=?");
+			pstmt.setInt(1, pps.getShoppingID());
+			pstmt.setInt(2, pps.getProductID());
+			pstmt.executeUpdate();
+			return true;
+		} catch (Exception e) {
+			e.getStackTrace();
 			return false;
 		}
 	}

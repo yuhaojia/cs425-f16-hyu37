@@ -1,14 +1,18 @@
 package model;
 
 public class Shoppingcart {
-
-
 	private int productID;
 	private int quantity;
-	private String productname;
 	private String producttype;
+	private String productname;	
 	private float price;
-
+	private int shoppingID;
+	public int getShoppingID() {
+		return shoppingID;
+	}
+	public void setShoppingID(int shoppingID) {
+		this.shoppingID = shoppingID;
+	}
 	public int getProductID() {
 		return productID;
 	}
@@ -21,17 +25,17 @@ public class Shoppingcart {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-	public String getProductname() {
-		return productname;
-	}
-	public void setProductname(String productname) {
-		this.productname = productname;
-	}
 	public String getProducttype() {
 		return producttype;
 	}
 	public void setProducttype(String producttype) {
 		this.producttype = producttype;
+	}
+	public String getProductname() {
+		return productname;
+	}
+	public void setProductname(String productname) {
+		this.productname = productname;
 	}
 	public float getPrice() {
 		return price;
@@ -40,5 +44,6 @@ public class Shoppingcart {
 		this.price = price;
 	}
 	
+		
 	
 }

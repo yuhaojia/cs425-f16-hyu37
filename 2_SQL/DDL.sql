@@ -125,6 +125,14 @@ create table CreditCard (
 		on delete set null	
 );
 
+--Entity ShoppingCart
+create table ShoppingCart(
+	shopID int,
+	customerID int,		--own relationship
+	primary key(shopID),
+	foreign key(customerID) references Customer
+);
+
 --Entity ProOrder
 create table ProOrder (
 	orderID int,
@@ -132,11 +140,14 @@ create table ProOrder (
 	--foreign key
 	cardNum numeric(16,0),
 	customerID int,
+	shopID int,
 
 	primary key (orderID),
 	FOREIGN KEY (cardNum) REFERENCES CreditCard
 		on delete set null,
 	FOREIGN KEY (customerID) REFERENCES Customer
+		on delete set null,
+	foreign key(shopID) references ShoppingCart
 		on delete set null,
 	check(status = 'issued' or status = 'sent' or status =  'received')
 );

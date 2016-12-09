@@ -41,4 +41,23 @@ public class ShoppingcartService {
 			return null;
 		}
 }
+	public boolean updatesc(Shopingcart pro) {
+
+		try {
+			pstmt = conn.prepareStatement(
+				"update Product set proType=?, ProName=?, proSize=?, infoType=?, info=? where productID =?");
+			pstmt.setString(1, pro.getProType());
+			pstmt.setString(2, pro.getProName());
+			pstmt.setFloat(3, pro.getProSize());
+			pstmt.setString(4, pro.getInfoType());
+			pstmt.setString(5, pro.getInfo());
+			pstmt.setInt(6, pro.getProID());
+			pstmt.executeUpdate();
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+	}
 }

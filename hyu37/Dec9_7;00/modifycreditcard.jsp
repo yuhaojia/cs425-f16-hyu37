@@ -1,4 +1,4 @@
-<%@page import="model.Address"%>
+<%@page import="model.Creditcard"%>
 <%@ page language="java" import="java.util.*" pageEncoding="ISO-8859-1"%>
 <%
 String path = request.getContextPath();
@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'modifyaddress.jsp' starting page</title>
+    <title>My JSP 'modifycreditcard.jsp' starting page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -24,37 +24,35 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-     <jsp:useBean id="address" class="model.Address"></jsp:useBean>
-  <jsp:useBean id="addresssevice" class="service.AddressService"></jsp:useBean>
+    <jsp:useBean id="creditcard" class="model.Creditcard"></jsp:useBean>
+  <jsp:useBean id="creditcardsevice" class="service.CreditcardService"></jsp:useBean>
   <%
-  	    String u =(String)session.getAttribute("theuser");
+  		String u =(String)session.getAttribute("theuser");
     	int IDNum = Integer.parseInt(u);
-		List addrs = addresssevice.queryAllCus(IDNum);
+		List creds = creditcardsevice.queryAllCus(IDNum);
 		// out.print(stus.size());  
-		Iterator iter = addrs.iterator();
+		Iterator iter = creds.iterator();
 	%>
 	<table>
 		<tr>
-			<td>Address ID</td>
-			<td>Street</td>
-			<td>City</td>
-			<td>State</td>
-			<td>Zipcode</td>
-			<td>Address Type</td>
+			<td>Card Number</td>
+			<td>ExpDate</td>
+			<td>Holder</td>
+			<td>CustomerID</td>
+			<td>AddressID</td>
 		</tr>
 		<%
 			int i = 0;
 			while (iter.hasNext()) {
-				Address addr = (Address) iter.next();
+				Creditcard cred = (Creditcard) iter.next();
 		%>
 		<tr <%if (i % 2 == 0) {%> bgcolor="#F0F8FF" <%}%>>
-			<td><%=addr.getAddrID()%></td>
-			<td><%=addr.getStreet()%></td>
-			<td><%=addr.getCity()%></td>
-			<td><%=addr.getStateName()%></td>
-			<td><%=addr.getZipcode()%></td>
-			<td><%=addr.getAddrType()%></td>
-			<td><a href="modifyaddressResult.jsp?id=<%=addr.getAddrID()%>">modify</a></td>
+			<td><%=cred.getCardNum()%></td>
+			<td><%=cred.getExpDate()%></td>
+			<td><%=cred.getHolder()%></td>
+			<td><%=cred.getCustomerID()%></td>
+			<td><%=cred.getAddrID()%></td>	
+			<td><a href="modifycreditcardResult.jsp?id=<%=cred.getCardNum()%>">modify</a></td>
 		</tr>
 		<%
 			i++;

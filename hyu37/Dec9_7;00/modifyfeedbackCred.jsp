@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'modifyfeedbackAddr.jsp' starting page</title>
+    <title>My JSP 'modifyfeedbackCred.jsp' starting page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -27,11 +27,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		request.setCharacterEncoding("utf-8");
 		
 	%>
-	 <jsp:useBean id="address" class="model.Address"></jsp:useBean>
-	<jsp:setProperty property="*" name="address" />
-	 <jsp:useBean id="addresssevice" class="service.AddressService"></jsp:useBean>
+	 <jsp:useBean id="creditcard" class="model.Creditcard"></jsp:useBean>
+	<jsp:setProperty property="*" name="creditcard" />
+	 <jsp:useBean id="creditcardsevice" class="service.CreditcardService"></jsp:useBean>
 <%
-		if (addresssevice.updateCus(address))
+		if (creditcardsevice.updateCus(creditcard))
 			out.print("success!!");
 		else
 			out.print("sorry!!");

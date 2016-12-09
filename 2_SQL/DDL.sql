@@ -112,7 +112,7 @@ create table Customer (
 --Entity CreditCard
 create table CreditCard (
 	cardNum numeric(16,0),
-	expDate date not null,
+	expDate varchar(256) not null,	--use date is too much pain!
 	holder varchar(256) not null,
 	--foreign key
 	customerID int,

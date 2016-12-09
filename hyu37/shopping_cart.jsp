@@ -34,35 +34,43 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		Iterator iter = stus.iterator();
 	
 	%>
+	<form action="shoppingresult.jsp" method="post">
 	<table>
 		<tr>
+			<td>Product ID</td>
 			<td>Product Type</td>
 			<td>Product Name</td>
 			<td>Product Price</td>
-			<td>Quantity</td>
+			<td>Quantity</td>			
 		</tr>
 		<%
 			int i = 0;
+			int k=0;
 			while (iter.hasNext()) {
 				Shoppingcart product1 = (Shoppingcart) iter.next();
+				k=product1.getShoppingID();
+	
 		%>
 		<tr <%if (i % 2 == 0) {%> bgcolor="#F0F8FF" <%}%>>
-
-			<td><input type="text" size=20 name="quantity"
+			<td><input type="text" size=20 name="productID"
+					value="<%= product1.getProductID()%>"readonly></td>
+			<td><input type="text" size=20 name="producttype"
 					value="<%= product1.getProducttype()%>"readonly></td>
-			<td><input type="text" size=20 name="quantity"
+			<td><input type="text" size=20 name="productname"
 					value="<%= product1.getProductname()%>"readonly></td>
-			<td><input type="text" size=20 name="quantity"
+			<td><input type="text" size=20 name="price"
 					value="<%= product1.getPrice()%>"readonly></td>
 			<td><input type="text" size=20 name="quantity"
 					value="<%= product1.getQuantity()%>"></td>
-			<td><a href="modifyProductInforesult.jsp?id=<%=product1.getProductID()%>">Add to shopping cart</a></td>
-		</tr>
+			<td align="center" colspan="2" ><input type="hidden" name="id" value="<%=product1.getProductID()%>"/><input type="submit"  value="Submit">; <a href="deletesc.jsp?id=<%=k%>">Delete</a></td>
+
 		<%
 			i++;
 			}
+			
 		%>
-
+       <td> <a href="checkout.jsp?id=<%=k%>">Check Out</a></td>
 	</table>
+	</form>
   </body>
 </html>

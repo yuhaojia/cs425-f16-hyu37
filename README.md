@@ -6,7 +6,9 @@ Team Member:	Zheng You		zyou3@hawk.iit.edu
 
 This project is a web application for online grocery store. The
 building environment is MyEclipse and Tomcat 7. The necessary
-jar file is "jdbc7.jar" which is included in this repository.
+jar file is "ojdbc7.jar" which is included in this repository.
+The jar file needs to be imported before the excuation of this
+application.
 
 We have finished all the bonus parts besides the necessary ones.
 The proof can be found under directory "image".

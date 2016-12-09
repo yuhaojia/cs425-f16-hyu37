@@ -71,8 +71,8 @@ insert into SupplierProduct values('Beverage', 'Coke');
 insert into SupplierProduct values('Beverage', 'Fanta');
 
 --Customer
-insert into Customer values(1, 198.43, 'John1', 'Dow1');
-insert into Customer values(2, 421.67, 'John2', 'Dow2');
+insert into Customer values(1, 1918.43, 'John1', 'Dow1');
+insert into Customer values(2, 4213.67, 'John2', 'Dow2');
 
 --CreditCard
 insert into CreditCard values(1111111111111111, '1-Nov-16', 'John1 Dow1', 1, 3);
@@ -127,7 +127,7 @@ insert into pay values(1111111111111111, 1);
 insert into pay values(2222222222222222, 2);
 
 --include
-insert into include values(1, 1, 45);
+insert into include values(1, 8, 45);
 insert into include values(2, 5, 50);
 
 commit;

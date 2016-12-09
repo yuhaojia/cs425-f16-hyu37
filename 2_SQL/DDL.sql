@@ -58,12 +58,13 @@ create table Staff(
 
 --entity Product
 create table Product(
-	proType varchar(256),
-	proName varchar(256),
+	productID int,
+	proType varchar(256) not null,
+	proName varchar(256) not null,
 	proSize float not null,
 	infoType varchar(256),
 	info varchar(2048),
-	primary key(proType, proName),
+	primary key(productID),
 	foreign key(infoType, info) references Info
 		on delete set null
 );
@@ -161,26 +162,24 @@ create table associate(
 --relationship pricePerState many-to-many
 create table pricePerState(
 	stateName char(2),
-	proType varchar(256),
-	proName varchar(256),
+	productID int,
 	statePrice float,
-	primary key(stateName, proType, proName),
+	primary key(stateName, productID),
 	foreign key(stateName) references State
 		on delete cascade,
-	foreign key(proType, proName) references Product
+	foreign key(productID) references Product
 		on delete cascade
 );
 
 --relationship contain many-to-many
 create table contain(
 	orderID int,
-	proType varchar(256),
-	proName varchar(256),
+	productID int,
 	quantity int,
-	primary key(orderID, proType, proName),
+	primary key(orderID, productID),
 	foreign key(orderID) references ProOrder
 		on delete cascade,
-	foreign key(proType, proName) references Product
+	foreign key(productID) references Product
 		on delete cascade
 );
 
@@ -201,12 +200,11 @@ create table provide
 --relationship stock many-to-many
 create table stock
 (
-  proType varchar(256),
-  proName varchar(256),
+  productID int,
   wareHouseID int,
   quanity int,
-  primary key(proType, proName, wareHouseID),
-  foreign key(proType, proName)references Product
+  primary key(productID, wareHouseID),
+  foreign key(productID)references Product
     on delete cascade,
   foreign key(wareHouseID)references WareHouse
     on delete cascade

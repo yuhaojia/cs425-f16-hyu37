@@ -38,16 +38,16 @@ insert into Staff values(101, 'Manager', 'John1', 'Dory1', 7);
 insert into Staff values(102, 'Assistant Manager', 'John2', 'Dory2', 8);
 
 --Product
-insert into Product values('Wine', 'Vodka', 0.2, 'Alcohol', '40%');
-insert into Product values('Wine', 'Champagne', 0.2, 'Alcohol', '10%');
-insert into Product values('Fruit', 'Apple', 0.1, 'Vitamins', '10%');
-insert into Product values('Fruit', 'Pear', 0.1, 'Vitamins', '30%');
-insert into Product values('Snake', 'Donut', 0.1, 'Calorie', '110g');
-insert into Product values('Snake', 'Cookie', 0.5, 'Calorie', '10g');
-insert into Product values('Meat', 'Chicken', 0.3, 'Protein', '10g');
-insert into Product values('Meat', 'Beef', 0.4, 'Protein', '200g');
-insert into Product values('Beverage', 'Coke', 0.1, 'Fat', '100g');
-insert into Product values('Beverage', 'Fanta', 0.1, 'Fat', '125g');
+insert into Product values(1, 'Wine', 'Vodka', 0.2, 'Alcohol', '40%');
+insert into Product values(2, 'Wine', 'Champagne', 0.2, 'Alcohol', '10%');
+insert into Product values(3, 'Fruit', 'Apple', 0.1, 'Vitamins', '10%');
+insert into Product values(4, 'Fruit', 'Pear', 0.1, 'Vitamins', '30%');
+insert into Product values(5, 'Snake', 'Donut', 0.1, 'Calorie', '110g');
+insert into Product values(6, 'Snake', 'Cookie', 0.5, 'Calorie', '10g');
+insert into Product values(7, 'Meat', 'Chicken', 0.3, 'Protein', '10g');
+insert into Product values(8, 'Meat', 'Beef', 0.4, 'Protein', '200g');
+insert into Product values(9, 'Beverage', 'Coke', 0.1, 'Fat', '100g');
+insert into Product values(10, 'Beverage', 'Fanta', 0.1, 'Fat', '125g');
 
 --Supplier
 insert into Supplier values(201, 'White', 'Walter', 9);
@@ -88,22 +88,22 @@ insert into associate values(1, 3);
 insert into associate values(2, 4);
 
 --pricePerState
-insert into pricePerState values('IL', 'Wine', 'Vodka', 50.0);
-insert into pricePerState values('IL', 'Wine', 'Champagne', 70.0);
-insert into pricePerState values('IL', 'Fruit', 'Apple', 1.0);
-insert into pricePerState values('IL', 'Fruit', 'Pear', 1.5);
-insert into pricePerState values('IL', 'Snake', 'Donut', 1.0);
-insert into pricePerState values('IL', 'Snake', 'Cookie', 2.3);
-insert into pricePerState values('IL', 'Meat', 'Chicken', 3.4);
-insert into pricePerState values('IL', 'Meat', 'Beef', 5.6);
-insert into pricePerState values('IL', 'Beverage', 'Coke', 1.2);
-insert into pricePerState values('IL', 'Beverage', 'Fanta', 1.1);
+insert into pricePerState values('IL', 1, 50.0);
+insert into pricePerState values('IL', 2, 70.0);
+insert into pricePerState values('IL', 3, 1.0);
+insert into pricePerState values('IL', 4, 1.5);
+insert into pricePerState values('IL', 5, 1.0);
+insert into pricePerState values('IL', 6, 2.3);
+insert into pricePerState values('IL', 7, 3.4);
+insert into pricePerState values('IL', 8, 5.6);
+insert into pricePerState values('IL', 9, 1.2);
+insert into pricePerState values('IL', 10, 1.1);
 
 --contain
-insert into contain values(10001, 'Wine', 'Vodka', 7);
-insert into contain values(10002, 'Snake', 'Donut', 4);
-insert into contain values(10003, 'Meat', 'Beef', 18);
-insert into contain values(10004, 'Beverage', 'Coke', 20);
+insert into contain values(10001, 2, 7);
+insert into contain values(10002, 4, 4);
+insert into contain values(10003, 7, 18);
+insert into contain values(10004, 1, 20);
 
 --provide
 insert into provide values(201, 'Wine', 'Vodka', 45.0);
@@ -112,9 +112,9 @@ insert into provide values(202, 'Fruit', 'Apple', 0.6);
 insert into provide values(202, 'Beverage', 'Fanta', 0.3);
 
 --stock
-insert into stock values('Wine', 'Champagne', 1, 10000);
-insert into stock values('Meat', 'Beef', 1, 4500);
-insert into stock values('Meat', 'Chicken', 2, 6500);
-insert into stock values('Fruit', 'Pear', 2, 3000);
+insert into stock values(1, 1, 10000);
+insert into stock values(2, 1, 4500);
+insert into stock values(3, 2, 6500);
+insert into stock values(4, 2, 3000);
 
 commit;

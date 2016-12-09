@@ -3,3 +3,10 @@ This is a repository for the final project of CS425 Fall 2016.
 Team Member:	Zheng You		zyou3@hawk.iit.edu
 				Yuxiang Huang	yhuan128@hawk.iit.edu
 				Haojia Yu 		hyu37@hawk.iit.edu
+
+This project is a web application for online grocery store. The
+building environment is MyEclipse and Tomcat 7. The necessary
+jar file is "jdbc7.jar" which is included in this repository.
+
+We have finished all the bonus parts besides the necessary ones.
+The proof can be found under directory "image".

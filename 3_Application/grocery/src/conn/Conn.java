@@ -14,7 +14,7 @@ public class Conn {
 		    String username = "zyou3";
 		    String password = "zyou33";
 		    conn = DriverManager.getConnection(url, username, password);	//connect to server
-		    System.out.println(conn.getMetaData().getURL());	//Test for success
+		    //System.out.println(conn.getMetaData().getURL());	//Test for success
 		}
 		catch(Exception e){
 			e.printStackTrace();

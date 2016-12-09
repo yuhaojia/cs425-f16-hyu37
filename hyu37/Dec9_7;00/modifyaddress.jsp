@@ -1,5 +1,4 @@
-<%@page import="model.PricePerState"%>
-<%@page import="service.PriceService"%>
+<%@page import="model.Address"%>
 <%@ page language="java" import="java.util.*" pageEncoding="ISO-8859-1"%>
 <%
 String path = request.getContextPath();
@@ -11,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'deletePriceInfo.jsp' starting page</title>
+    <title>My JSP 'modifyaddress.jsp' starting page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -25,33 +24,37 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-  <jsp:useBean id="priceperstate" class="model.PricePerState"></jsp:useBean>
-  <jsp:useBean id="priceservice" class="service.PriceService"></jsp:useBean>
+     <jsp:useBean id="address" class="model.Address"></jsp:useBean>
+  <jsp:useBean id="addresssevice" class="service.AddressService"></jsp:useBean>
   <%
-		List pros = priceservice.queryAllpps();
+  	    String u =(String)session.getAttribute("theuser");
+    	int IDNum = Integer.parseInt(u);
+		List addrs = addresssevice.queryAllCus(IDNum);
 		// out.print(stus.size());  
-		Iterator iter = pros.iterator();
-  %>
+		Iterator iter = addrs.iterator();
+	%>
 	<table>
 		<tr>
-			<td>Product ID</td>
-			<td>State Name</td>
-			<td>State Price</td>
-			<td>Product Type</td>
-			<td>Product Name</td>
+			<td>Address ID</td>
+			<td>Street</td>
+			<td>City</td>
+			<td>State</td>
+			<td>Zipcode</td>
+			<td>Address Type</td>
 		</tr>
 		<%
 			int i = 0;
 			while (iter.hasNext()) {
-				PricePerState product1 = (PricePerState)iter.next();
+				Address addr = (Address) iter.next();
 		%>
 		<tr <%if (i % 2 == 0) {%> bgcolor="#F0F8FF" <%}%>>
-			<td><%=product1.getProductID()%></td>
-			<td><%=product1.getstateName()%></td>
-			<td><%=product1.getStatePrice()%></td>
-			<td><%=product1.getProtype()%></td>
-			<td><%=product1.getProname()%></td>
-			<td><a href="deleteoneprice.jsp?id=<%=product1.getStatePrice()%>">delete</a></td>
+			<td><%=addr.getAddrID()%></td>
+			<td><%=addr.getStreet()%></td>
+			<td><%=addr.getCity()%></td>
+			<td><%=addr.getStateName()%></td>
+			<td><%=addr.getZipcode()%></td>
+			<td><%=addr.getAddrType()%></td>
+			<td><a href="modifyaddressResult.jsp?id=<%=addr.getAddrID()%>">modify</a></td>
 		</tr>
 		<%
 			i++;
@@ -59,6 +62,5 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		%>
 
 	</table>
-  
   </body>
 </html>

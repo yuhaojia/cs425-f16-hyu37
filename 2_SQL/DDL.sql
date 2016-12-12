@@ -73,8 +73,7 @@ create table Product(
 );
 
 --entitiy Supplier
-create table Supplier
-(
+create table Supplier(
   supplierID int,
   lastName varchar(256) not null,
   firstName varchar(256) not null,
@@ -85,8 +84,7 @@ create table Supplier
 );
 
 --entitiy WareHouse
-create table WareHouse
-(
+create table WareHouse(
   wareHouseID int,
   capacity float not null,
   addrID int,
@@ -96,15 +94,14 @@ create table WareHouse
 );
 
 --entitiy SupplierProduct
-create table SupplierProduct
-(
+create table SupplierProduct(
   supType varchar(256),
   supName varchar(256),
   primary key(supType, supName)
 );
 
 --Entity Customer
-create table Customer (
+create table Customer(
 	customerID int,
 	balance float not null,
 	lastName varchar(256) not null,
@@ -113,14 +110,12 @@ create table Customer (
 );
 
 --Entity CreditCard
-create table CreditCard (
+create table CreditCard(
 	cardNum numeric(16,0),
 	expDate varchar(256) not null,	--use date is too much pain!
 	holder varchar(256) not null,
-	--foreign key
 	customerID int,
 	addrID int,
-
 	primary key (cardNum),
 	FOREIGN KEY (customerID) REFERENCES Customer
 		on delete set null,
@@ -140,11 +135,9 @@ create table ShoppingCart(
 create table ProOrder (
 	orderID int,
 	status varchar(256) not null,
-	--foreign key
 	cardNum numeric(16,0),
 	customerID int,
 	shopID int,
-
 	primary key (orderID),
 	FOREIGN KEY (cardNum) REFERENCES CreditCard
 		on delete set null,
@@ -198,8 +191,7 @@ create table contain(
 );
 
 --relationship provide many-to-many
-create table provide
-(
+create table provide(
   supplierID int,
   supType varchar(256),
   supName varchar(256),
@@ -212,8 +204,7 @@ create table provide
 );
 
 --relationship stock many-to-many
-create table stock
-(
+create table stock(
   productID int,
   wareHouseID int,
   quanity int,
@@ -243,12 +234,13 @@ create table include(
 	foreign key(productID) references Product
 );
 
-commit;
+commit;		--commit create table
 
 --State
 insert into State values('IL');
 insert into State values('CA');
 insert into State values('SD');
+insert into State values('ND');
 
 --Address
 insert into address values(1, 'S King Dr', 'Chicago', 'IL', 60616, 'delivery');
@@ -302,8 +294,8 @@ insert into Supplier values(201, 'White', 'Walter', 9);
 insert into Supplier values(202, 'Pinkman', 'Jessy', 10);
 
 --WareHouse
-insert into WareHouse values(1, 1000.00, 11);
-insert into WareHouse values(2, 5000.00, 12);
+insert into WareHouse values(1, 50000.00, 11);
+insert into WareHouse values(2, 50000.00, 12);
 
 --SupplierProduct
 insert into SupplierProduct values('Wine', 'Vodka');
@@ -364,7 +356,7 @@ insert into provide values(202, 'Fruit', 'Apple', 0.6);
 insert into provide values(202, 'Beverage', 'Fanta', 0.3);
 
 --stock
-insert into stock values(1, 1, 10000);
+insert into stock values(1, 1, 1000);
 insert into stock values(2, 1, 4500);
 insert into stock values(3, 2, 6500);
 insert into stock values(4, 2, 3000);
@@ -377,4 +369,4 @@ insert into pay values(2222222222222222, 2);
 insert into include values(1, 8, 45);
 insert into include values(2, 5, 50);
 
-commit;
+commit;		--commit insert

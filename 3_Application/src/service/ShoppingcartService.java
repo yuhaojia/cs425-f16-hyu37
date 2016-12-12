@@ -99,12 +99,58 @@ public class ShoppingcartService {
 	
 	public boolean updatesc(Shoppingcart pro) {
 		try {
-			pstmt = conn.prepareStatement(
-				"update include set quantity=? where productID =?");
-			pstmt.setInt(1, pro.getQuantity());
+			//find customerID
+			pstmt = conn.prepareStatement("select customerID from shoppingcard where shopID = ?");
+			pstmt.setInt(1, pro.getShopID());
+			ResultSet rs = pstmt.executeQuery();
+			int customerID = -1;
+			while(rs.next()){
+				customerID = rs.getInt(1);
+			}
+			
+			//find corresponding state
+			pstmt = conn.prepareStatement("select stateName from associate natural join Address "
+					+ "where customerID = ?");
+			pstmt.setInt(1, customerID);
+			rs = pstmt.executeQuery();
+			String state = "";
+			while(rs.next()){
+				state = rs.getString(1);
+			}
+			
+			//find in-state warehouse
+			pstmt = conn.prepareStatement("select warehouseID from Address natural join WareHouse where "
+					+ "stateName = ?");
+			pstmt.setString(1, state);
+			rs = pstmt.executeQuery();
+			int wareID = -1;
+			while(rs.next()){
+				wareID = rs.getInt(1);
+			}
+						
+			//find this product's quantity
+			pstmt = conn.prepareStatement("select quantity from WareHouse natural join stock natural join "
+					+ "Product where warehouseID = ? and productID = ?");
+			pstmt.setInt(1, wareID);
 			pstmt.setInt(2, pro.getProductID());
-			pstmt.executeUpdate();
-			return true;
+			rs = pstmt.executeQuery();
+			int proQuantity = -1;
+			while(rs.next()){
+				proQuantity = rs.getInt(1);
+			}
+			
+			//check limit
+			if(proQuantity < pro.getQuantity()){
+				return false;
+			}
+			else{
+				pstmt = conn.prepareStatement(
+						"update include set quantity=? where productID =?");
+				pstmt.setInt(1, pro.getQuantity());
+				pstmt.setInt(2, pro.getProductID());
+				pstmt.executeUpdate();
+				return true;
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

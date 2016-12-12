@@ -1,4 +1,4 @@
-This is a repository for the final project of CS425 Fall 2016.
+This repository is for the final project of CS425 Fall 2016.
 
 Team Member:	Zheng You		zyou3@hawk.iit.edu
 				Yuxiang Huang	yhuan128@hawk.iit.edu
@@ -10,6 +10,6 @@ jar file is "ojdbc7.jar" which is included in this repository.
 The jar file needs to be imported before the excuation of this
 application.
 
-In addition to the bonus part we showcased in demo, we have also
-implemented the images of products. Please refer to the "image"
-folder.
+In addition to the bonus parts we showcased in demo, we have 
+implemented all the rest bonus parts. Please refer to the "image"
+directory for details.

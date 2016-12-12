@@ -56,12 +56,30 @@ public class StockService {
 			{
 				return false;
 			}
-			pstmt = conn.prepareStatement("insert into stock values(?,?,?)");
+			
+			pstmt = conn.prepareStatement("select * from stock where productID = ?, wareHouseID = ?");
+			pstmt.setInt(1, pps.getProductID());
+			pstmt.setInt(1, pps.getWareHouseID());
+			
+			ResultSet rs1 = pstmt.executeQuery();
+			if(!rs1.next()){	//do not have this state
+				pstmt = conn.prepareStatement("insert into stock values(?,?,?)");
 				pstmt.setInt(1, pps.getProductID());
-			pstmt.setInt(2, pps.getWareHouseID());
-			pstmt.setInt(3, pps.getQuanity());
-			pstmt.executeUpdate();
-			return true;
+			    pstmt.setInt(2, pps.getWareHouseID());
+			    pstmt.setInt(3, pps.getQuanity());
+			    pstmt.executeUpdate();
+			    return true;			
+			}
+			else
+			{
+				pstmt = conn.prepareStatement("update stock set quanity = ? where productID = ? and wareHouseID = ?");
+				pstmt.setInt(1, pps.getProductID());
+			    pstmt.setInt(2, pps.getWareHouseID());
+			    pstmt.setInt(3, pps.getQuanity());
+			    pstmt.executeUpdate();
+			    return true;	
+			}
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

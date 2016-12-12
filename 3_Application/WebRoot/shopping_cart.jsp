@@ -37,6 +37,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<form action="shoppingresult.jsp" method="post">
 	<table>
 		<tr>
+		    <td>Shop ID</td>
 			<td>Product ID</td>
 			<td>Product Type</td>
 			<td>Product Name</td>
@@ -51,6 +52,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				k=product1.getShopID();
 		%>
 		<tr <%if (i % 2 == 0) {%> bgcolor="#F0F8FF" <%}%>>
+		<td><input type="text" size=20 name="ShopID"
+					value="<%= product1.getShopID()%>"readonly></td>
 			<td><input type="text" size=20 name="productID"
 					value="<%= product1.getProductID()%>"readonly></td>
 			<td><input type="text" size=20 name="producttype"

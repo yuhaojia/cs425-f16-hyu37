@@ -34,9 +34,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<jsp:setProperty property="*" name="shoppingcart" />
 <%
 		if (shoppingcartService.updatesc(shoppingcart))
-			out.print("success!!");
+			out.print("Success!");
 		else
-			out.print("sorry!!");
+			out.print("Sorry! Your request quantity is larger than the storage.");
 	%>
 	 
   </body>

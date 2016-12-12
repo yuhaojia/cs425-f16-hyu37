@@ -44,13 +44,15 @@ public class StockService {
 		try {
 			int totalL= total + pps.getQuanity();
 			int i = pps.getWareHouseID();
-			pstmt = conn.prepareStatement("select * from Warehouse where wareHouseID=?");
+			pstmt = conn.prepareStatement("select * from WareHouse where wareHouseID=?");
 			pstmt.setInt(1, i);
 			ResultSet rs = pstmt.executeQuery();
-			
-			float f = rs.getFloat(2);
+			float f = 0;
+			if (rs.next()) {
+			f = rs.getFloat(2);
+			}
 			float totalff = (float) totalL;
-			if(totalff>f)
+			if(totalff > f)
 			{
 				return false;
 			}

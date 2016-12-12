@@ -9,3 +9,7 @@ building environment is MyEclipse and Tomcat 7. The necessary
 jar file is "ojdbc7.jar" which is included in this repository.
 The jar file needs to be imported before the excuation of this
 application.
+
+In addition to the bonus part we showcased in demo, we have also
+implemented the images of products. Please refer to the "image"
+folder.

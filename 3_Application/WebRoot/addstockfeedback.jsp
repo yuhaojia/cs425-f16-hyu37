@@ -1,3 +1,5 @@
+	<%@page import="model.Stock"%>
+<%@page import="service.StockService"%>
 	<%@ page language="java" import="java.util.*" pageEncoding="ISO-8859-1"%>
 <%
 String path = request.getContextPath();
@@ -31,14 +33,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<jsp:setProperty property="*" name="stock" />
 
 	<%
-
+		List pros = stockService.queryAllstock();
+		// out.print(stus.size());  
+		Iterator iter = pros.iterator();
+		int total = 0;
+			while (iter.hasNext()) {
+				Stock product1 = (Stock)iter.next();
+				total = total + product1.getQuanity();				
+			}
 	%>
 
 	<%
-		if (stockService.addstock(stock))
-			out.print("success!!");
+		if (stockService.addstock(stock, total))
+			out.print("Success!!");
 		else
-			out.print("sorry!!");
+			out.print("Sorry! The total size of all products stored in this warehouse exceed the capability!");
 	%>
 
   </body>

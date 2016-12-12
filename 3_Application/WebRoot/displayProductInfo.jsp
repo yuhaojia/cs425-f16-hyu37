@@ -33,6 +33,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	%>
 	<table>
 		<tr>
+		    <td>Image</td>	
 			<td>Product ID</td>		
 			<td>Product Type</td>
 			<td>Product Name</td>
@@ -46,6 +47,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				Product product1 = (Product) iter.next();
 		%>
 		<tr <%if (i % 2 == 0) {%> bgcolor="#F0F8FF" <%}%>>
+		    <td><img src="images/<%=product1.getProID()%>.jpg"></td>	
 			<td><%=product1.getProID()%></td>
 			<td><%=product1.getProType()%></td>
 			<td><%=product1.getProName()%></td>

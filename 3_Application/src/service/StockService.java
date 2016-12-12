@@ -8,8 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import conn.Conn;
+import model.Warehouse;
+
 import model.PricePerState;
 import model.Stock;;
+
 public class StockService {
 	private Connection conn;
 	private PreparedStatement pstmt;
@@ -37,8 +40,22 @@ public class StockService {
 		}
 
 	}
-	public boolean addstock(Stock pps) {
+	public boolean addstock(Stock pps, int total) {
 		try {
+			int totalL= total + pps.getQuanity();
+			int i = pps.getWareHouseID();
+			pstmt = conn.prepareStatement("select * from WareHouse where wareHouseID=?");
+			pstmt.setInt(1, i);
+			ResultSet rs = pstmt.executeQuery();
+			float f = 0;
+			if (rs.next()) {
+			f = rs.getFloat(2);
+			}
+			float totalff = (float) totalL;
+			if(totalff > f)
+			{
+				return false;
+			}
 			pstmt = conn.prepareStatement("insert into stock values(?,?,?)");
 				pstmt.setInt(1, pps.getProductID());
 			pstmt.setInt(2, pps.getWareHouseID());
